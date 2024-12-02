@@ -1,6 +1,6 @@
 # Python 入門教學
 ---
-## 1. [Python 簡介](#1-python-簡介)
+1. [Python 簡介](#1-python-簡介)
 ### 1.1 [歷史](#歷史)
 ### 1.2 [特點](#特點)
 ### 1.3 [示例程式碼：打印-Hello-World](#示例程式碼打印-hello-world)
