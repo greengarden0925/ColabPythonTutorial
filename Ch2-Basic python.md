@@ -96,7 +96,7 @@ print("Hello, " + name + "!")
 
 ## 3. 控制結構
 
-## 1. 條件語句（if、elif、else）
+### 3.1. 條件語句（if、elif、else）
 
 ### 說明  
 條件語句用於根據條件的真假來執行不同的程式碼區塊。
@@ -132,7 +132,7 @@ else:
 
 ---
 
-## 2. 迴圈（for 和 while）
+### 3.2 迴圈（for 和 while）
 
 ### 說明  
 迴圈用於重複執行某段程式碼，直到條件不成立。`for` 適合用於迭代結構，`while` 用於條件控制。
@@ -185,7 +185,7 @@ print("總和是：", total)
 
 ---
 
-## 3. 循環控制語句（break、continue、pass）
+### 3.3 循環控制語句（break、continue、pass）
 
 ### 說明  
 - **`break`**：結束整個迴圈。  
@@ -247,7 +247,7 @@ for i in range(1, 11):
 ---
 
 ## 4. 函式與模組
-## 1. 函式的定義與調用（`def` 和 `return`）
+### 4.1 函式的定義與調用（`def` 和 `return`）
 
 ### 說明  
 函式是一段可重複執行的代碼，通過 `def` 關鍵字定義，可以使用 `return` 傳回結果。
@@ -288,7 +288,7 @@ print(is_even(7))  # False
 
 ---
 
-## 2. 匯入模組與使用內建函式（如 `math`、`random`）
+### 4.2 匯入模組與使用內建函式（如 `math`、`random`）
 
 ### 說明  
 模組是包含 Python 代碼的文件，可以透過 `import` 將模組功能匯入程式中。
@@ -350,7 +350,7 @@ print("平均值是：", average)
 
 ---
 
-## 3. 自訂模組的創建與使用
+### 4.3 自訂模組的創建與使用
 
 ### 說明  
 可以將函式存儲在一個 `.py` 文件中作為模組，然後在其他程式中匯入使用。
@@ -437,7 +437,7 @@ print("10 是否為質數？", math_utils.is_prime(10))  # False
 ## 5. 資料結構
 ---
 
-## 1. 列表（`list`）操作：新增、刪除、排序
+### 5.1 列表（`list`）操作：新增、刪除、排序
 
 ### 說明  
 列表是可變的有序集合，用於存儲多個值，可以新增、刪除、或排序元素。
@@ -496,7 +496,7 @@ print("更新後的分數列表：", scores)  # [85, 88, 90, 92]
 
 ---
 
-## 2. 字典（`dict`）操作：鍵值對管理
+### 5.2 字典（`dict`）操作：鍵值對管理
 
 ### 說明  
 字典是一種無序的鍵值對集合，用於快速查找、添加、或刪除資料。
@@ -550,7 +550,7 @@ print("更新後的學生列表：", students)  # {'Alice': 85, 'Bob': 92, 'Davi
 
 ---
 
-## 3. 集合（`set`）與元組（`tuple`）的使用場景
+### 5.3 集合（`set`）與元組（`tuple`）的使用場景
 
 ### 集合（`set`）
 
@@ -616,192 +616,11 @@ for city, lat, lon in cities:
     print(f"{city} 的經緯度是：({lat}, {lon})")
 ```
 
----
-## 5. 資料結構
----
-## 1. 列表（`list`）操作：新增、刪除、排序
-
-### 說明  
-列表是可變的有序集合，用於存儲多個值，可以新增、刪除、或排序元素。
-
-### 範例程式碼
-
-#### 新增元素
-```python
-# 使用 append() 方法新增元素
-fruits = ["apple", "banana", "cherry"]
-fruits.append("orange")  # 新增一個元素到列表末尾
-print(fruits)  # ['apple', 'banana', 'cherry', 'orange']
-
-# 使用 insert() 方法在指定位置新增元素
-fruits.insert(1, "kiwi")  # 在索引 1 插入 'kiwi'
-print(fruits)  # ['apple', 'kiwi', 'banana', 'cherry', 'orange']
-```
-
-#### 刪除元素
-```python
-# 使用 remove() 方法刪除指定值
-fruits.remove("banana")  # 刪除 'banana'
-print(fruits)  # ['apple', 'kiwi', 'cherry', 'orange']
-
-# 使用 pop() 方法刪除指定位置的元素
-removed_fruit = fruits.pop(2)  # 刪除索引 2 的元素
-print(removed_fruit)  # 'cherry'
-print(fruits)  # ['apple', 'kiwi', 'orange']
-```
-
-#### 排序
-```python
-# 使用 sort() 方法排序
-numbers = [5, 2, 9, 1]
-numbers.sort()  # 升序排序
-print(numbers)  # [1, 2, 5, 9]
-
-# 使用 sorted() 函數返回新排序列表
-numbers_desc = sorted(numbers, reverse=True)  # 降序排序
-print(numbers_desc)  # [9, 5, 2, 1]
-```
-
-### 練習題  
-**問題：** 創建一個學生分數的列表，新增一個分數，刪除最低分數，並將列表按升序排序後打印。  
-
-**提示：** 使用 `append()`、`min()` 和 `sort()`。  
-
-**標準答案：**
-```python
-scores = [85, 92, 78, 90]
-scores.append(88)  # 新增一個分數
-scores.remove(min(scores))  # 刪除最低分數
-scores.sort()  # 排序
-print("更新後的分數列表：", scores)  # [85, 88, 90, 92]
-```
-
----
-
-## 2. 字典（`dict`）操作：鍵值對管理
-
-### 說明  
-字典是一種無序的鍵值對集合，用於快速查找、添加、或刪除資料。
-
-### 範例程式碼
-
-#### 新增或修改鍵值對
-```python
-# 新增鍵值對
-student = {"name": "Alice", "age": 20}
-student["grade"] = "A"  # 新增 'grade' 鍵
-print(student)  # {'name': 'Alice', 'age': 20, 'grade': 'A'}
-
-# 修改鍵值對
-student["age"] = 21  # 修改 'age' 的值
-print(student)  # {'name': 'Alice', 'age': 21, 'grade': 'A'}
-```
-
-#### 刪除鍵值對
-```python
-# 使用 pop() 方法刪除鍵
-removed_value = student.pop("grade")  # 刪除 'grade'
-print(removed_value)  # 'A'
-print(student)  # {'name': 'Alice', 'age': 21}
-
-# 使用 del 關鍵字刪除鍵值對
-del student["age"]
-print(student)  # {'name': 'Alice'}
-```
-
-#### 遍歷字典
-```python
-# 遍歷鍵與值
-for key, value in student.items():
-    print(f"{key}: {value}")
-```
-
-### 練習題  
-**問題：** 創建一個包含 3 位學生及其分數的字典，新增一位學生及其分數，刪除分數最低的學生。  
-
-**提示：** 使用 `min()` 尋找分數最低的鍵值。  
-
-**標準答案：**
-```python
-students = {"Alice": 85, "Bob": 92, "Charlie": 78}
-students["David"] = 88  # 新增學生
-lowest_score = min(students, key=students.get)  # 找到最低分的學生
-del students[lowest_score]  # 刪除最低分學生
-print("更新後的學生列表：", students)  # {'Alice': 85, 'Bob': 92, 'David': 88}
-```
-
----
-
-## 3. 集合（`set`）與元組（`tuple`）的使用場景
-
-### 集合（`set`）
-
-#### 說明  
-集合是無序且不重複的元素集合，適合用於快速測試是否存在某元素或去重操作。
-
-#### 範例程式碼
-```python
-# 去重
-numbers = [1, 2, 2, 3, 4, 4]
-unique_numbers = set(numbers)  # 去除重複元素
-print(unique_numbers)  # {1, 2, 3, 4}
-
-# 集合運算
-set_a = {1, 2, 3}
-set_b = {2, 3, 4}
-print(set_a & set_b)  # 交集：{2, 3}
-print(set_a | set_b)  # 聯集：{1, 2, 3, 4}
-print(set_a - set_b)  # 差集：{1}
-```
-
-### 元組（`tuple`）
-
-#### 說明  
-元組是不可變的有序集合，適合存儲不變的數據（如座標）。
-
-#### 範例程式碼
-```python
-# 創建元組
-point = (2, 3)
-print("x 坐標是：", point[0])  # 訪問元組的元素
-
-# 元組的解包
-x, y = point
-print(f"x: {x}, y: {y}")
-```
-
-### 練習題  
-
-#### 集合題目  
-**問題：** 給定兩個班級的學生名單，找出同時參加兩個班級的學生。  
-
-**提示：** 使用集合的交集運算。  
-
-**標準答案：**
-```python
-class_a = {"Alice", "Bob", "Charlie"}
-class_b = {"Bob", "David", "Charlie"}
-common_students = class_a & class_b
-print("同時參加兩個班級的學生：", common_students)  # {'Bob', 'Charlie'}
-```
-
-#### 元組題目  
-**問題：** 創建一個元組存放 3 個城市的經緯度，並打印每個城市的經緯度。  
-
-**提示：** 使用迴圈解包元組內容。  
-
-**標準答案：**
-```python
-cities = [("Taipei", 25.0330, 121.5654), ("Tokyo", 35.6895, 139.6917), ("Seoul", 37.5665, 126.9780)]
-
-for city, lat, lon in cities:
-    print(f"{city} 的經緯度是：({lat}, {lon})")
-```
 ---
 ## 6. 檔案操作
 ---
 
-## 1. 檔案操作：打開、讀取、寫入文件（`open()`、`read()`、`write()`）
+### 6.1 檔案操作：打開、讀取、寫入文件（`open()`、`read()`、`write()`）
 
 ### 說明  
 檔案操作是程式處理數據的重要部分，通過 `open()` 打開文件，並使用 `read()` 讀取或 `write()` 寫入內容。
@@ -859,7 +678,7 @@ print(content)
 
 ---
 
-## 2. 檔案處理的錯誤捕捉
+### 6.2 檔案處理的錯誤捕捉
 
 ### 說明  
 在檔案操作中可能會發生文件不存在、讀寫權限不足等錯誤，這些問題可以通過異常處理來應對。
@@ -900,7 +719,7 @@ while True:
 ## 7. 異常處理
 ---
 
-## 1. 異常處理：使用 `try`、`except` 捕捉錯誤
+### 7.1 異常處理：使用 `try`、`except` 捕捉錯誤
 
 ### 說明  
 異常處理幫助程式在錯誤發生時不中斷，並能執行相應的應對措施。
@@ -929,7 +748,7 @@ except ZeroDivisionError:
 
 ---
 
-## 2. 使用 `finally` 處理資源釋放
+### 7.2 使用 `finally` 處理資源釋放
 
 ### 說明  
 `finally` 區塊中的程式碼無論是否發生異常都會執行，適合用於釋放資源，如關閉文件。
@@ -971,7 +790,7 @@ finally:
 ---
 ## 8. 物件導向程式設計(Object-oriented programming, OOP) 
 ---
-## 1. 類與物件的概念
+### 8.1 類與物件的概念
 
 ### 說明  
 - **類（Class）** 是對物件的抽象描述，定義了物件的屬性和行為。  
@@ -1019,7 +838,7 @@ my_car.drive()
 
 ---
 
-## 2. 定義類（`class`）與方法
+### 8.2 定義類（`class`）與方法
 
 ### 說明  
 類可以包含屬性（變數）和方法（函式），通過定義方法來描述物件的行為。
@@ -1074,7 +893,7 @@ print("周長是：", rect.perimeter())
 
 ---
 
-## 3. 繼承與多型
+### 8.3 繼承與多型
 
 ### 說明  
 - **繼承（Inheritance）**：允許新類別基於現有類別創建，繼承父類的屬性和方法。  
@@ -1153,6 +972,237 @@ print("正方形的面積是：", square.area())  # 正方形的面積
 
 ---
 ## 9. 常用函式庫
+---
+本教案介紹 Python 的常用函式庫，包括數學運算、隨機生成、日期與時間處理，以及數據處理工具 `numpy` 和 `pandas` 的基礎應用。
+---
+
+### 9.1 數學運算（`math` 模組）
+
+### 說明  
+`math` 模組提供了常用的數學函數和常數，如平方根、對數、三角函數、圓周率等。
+
+### 範例程式碼
+
+#### 基本數學運算
+```python
+import math
+
+# 計算平方根
+print("16 的平方根是：", math.sqrt(16))
+
+# 計算對數
+print("10 的自然對數是：", math.log(10))
+
+# 使用圓周率計算圓面積
+radius = 5
+area = math.pi * radius ** 2
+print(f"半徑為 {radius} 的圓面積是：", area)
+```
+
+#### 三角函數
+```python
+# 計算三角函數值
+angle = math.radians(30)  # 將角度轉為弧度
+print("sin(30°) 的值是：", math.sin(angle))
+print("cos(30°) 的值是：", math.cos(angle))
+```
+
+### 練習題  
+**問題：** 計算一個三角形的斜邊長，已知兩直角邊分別為 3 和 4。  
+
+**提示：** 使用勾股定理公式，斜邊長為 `sqrt(a^2 + b^2)`。  
+
+**標準答案：**
+```python
+import math
+
+a = 3
+b = 4
+hypotenuse = math.sqrt(a ** 2 + b ** 2)
+print("三角形的斜邊長是：", hypotenuse)
+```
+
+---
+
+### 9.2 隨機生成（`random` 模組）
+
+### 說明  
+`random` 模組用於生成隨機數或隨機選擇元素。
+
+### 範例程式碼
+
+#### 隨機數生成
+```python
+import random
+
+# 生成 1 到 10 的隨機整數
+print("隨機整數：", random.randint(1, 10))
+
+# 生成 0 到 1 的隨機浮點數
+print("隨機浮點數：", random.random())
+```
+
+#### 隨機選擇與打亂
+```python
+# 隨機選擇
+choices = ["apple", "banana", "cherry"]
+print("隨機選擇的水果：", random.choice(choices))
+
+# 打亂列表順序
+random.shuffle(choices)
+print("打亂後的列表：", choices)
+```
+
+### 練習題  
+**問題：** 模擬擲 6 面骰子 10 次，並打印每次的結果。  
+
+**提示：** 使用 `randint(1, 6)` 模擬骰子擲出結果。  
+
+**標準答案：**
+```python
+import random
+
+for _ in range(10):
+    print("骰子結果：", random.randint(1, 6))
+```
+
+---
+
+### 9.3 日期與時間處理（`datetime` 模組）
+
+### 說明  
+`datetime` 模組用於處理日期與時間，支援格式化和計算。
+
+### 範例程式碼
+
+#### 獲取當前時間
+```python
+from datetime import datetime
+
+now = datetime.now()
+print("當前日期與時間：", now)
+```
+
+#### 日期格式化
+```python
+# 格式化為自定義格式
+formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
+print("格式化日期：", formatted_date)
+```
+
+#### 日期計算
+```python
+from datetime import timedelta
+
+# 計算 7 天後的日期
+future_date = now + timedelta(days=7)
+print("7 天後的日期是：", future_date)
+```
+
+### 練習題  
+**問題：** 計算用戶的生日距離今天還有多少天。  
+
+**提示：** 使用 `datetime.strptime` 解析生日，並與當前日期相減。  
+
+**標準答案：**
+```python
+from datetime import datetime
+
+birthday = input("請輸入生日 (格式：YYYY-MM-DD)： ")
+birthday_date = datetime.strptime(birthday, "%Y-%m-%d")
+today = datetime.now()
+
+days_left = (birthday_date - today).days
+print(f"距離你的生日還有 {days_left} 天。")
+```
+
+---
+
+### 9.4 數據處理（`numpy` 和 `pandas`）
+
+### 說明  
+- **`numpy`**：數值計算工具，適合處理多維數據和矩陣操作。  
+- **`pandas`**：數據分析工具，提供強大的數據結構（如 `DataFrame`）。
+
+---
+
+### 使用 `numpy`
+
+#### 範例程式碼
+```python
+import numpy as np
+
+# 創建數組
+array = np.array([1, 2, 3, 4])
+print("數組：", array)
+
+# 基本運算
+print("數組的平方：", array ** 2)
+```
+
+#### 矩陣操作
+```python
+# 創建矩陣
+matrix = np.array([[1, 2], [3, 4]])
+print("矩陣：")
+print(matrix)
+
+# 矩陣的轉置
+print("矩陣的轉置：")
+print(matrix.T)
+```
+
+### 使用 `pandas`
+
+#### 範例程式碼
+```python
+import pandas as pd
+
+# 創建 DataFrame
+data = {
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Age": [25, 30, 35],
+    "Score": [85, 90, 95]
+}
+df = pd.DataFrame(data)
+print("數據表：")
+print(df)
+
+# 選取列
+print("選取 'Age' 列：")
+print(df["Age"])
+```
+
+### 練習題  
+
+#### `numpy` 練習  
+**問題：** 創建一個長度為 10 的數組，所有元素為 0，然後將第 5 個元素設為 1。  
+
+**標準答案：**
+```python
+import numpy as np
+
+array = np.zeros(10)  # 創建全為 0 的數組
+array[4] = 1  # 將第 5 個元素設為 1
+print("數組：", array)
+```
+
+#### `pandas` 練習  
+**問題：** 創建一個包含 3 位學生的 DataFrame，並計算分數的平均值。  
+
+**標準答案：**
+```python
+import pandas as pd
+
+data = {
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Score": [85, 90, 95]
+}
+df = pd.DataFrame(data)
+average_score = df["Score"].mean()
+print("分數的平均值是：", average_score)
+```
+
 ---
 
 
