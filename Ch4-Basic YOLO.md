@@ -1,4 +1,4 @@
-#YOLO 影像辨識基礎應用（使用 YOLOv8 或 YOLOv9）
+# YOLO 影像辨識基礎應用（使用 YOLOv8 或 YOLOv9）
 ---
 
 ## **1. YOLO 模型簡介**
