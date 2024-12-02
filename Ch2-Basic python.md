@@ -95,47 +95,6 @@ print("Hello, " + name + "!")
 ---
 
 ## 3. 控制結構
-
-### 條件語句
-Python 使用 `if`、`elif` 和 `else` 來實現條件分支。
-
-### 示例程式碼：判斷數字是否為偶數
-```python
-# 判斷數字是否為偶數
-number = 4
-if number % 2 == 0:
-    print(f"{number} is even.")
-else:
-    print(f"{number} is odd.")
-```
-
-#### 註解說明：
-- `number % 2 == 0`：判斷數字是否能被 2 整除。
-- `f"{number}"`：格式化字串，用於動態插入變數值。
-
-### 練習題：
-1. 編寫程式碼判斷一個數字是否為正數、負數或零。
-
-#### 提示：
-- 使用多個條件分支。
-
-#### 標準答案：
-```python
-number = -5
-if number > 0:
-    print("Positive number")
-elif number < 0:
-    print("Negative number")
-else:
-    print("Zero")
-```
-
-# 控制結構教案
-
-本教案適合大學生學習 Python 中的控制結構，涵蓋條件語句、迴圈、以及循環控制語句的基礎應用。
-
----
-
 ## 1. 條件語句（if、elif、else）
 
 ### 說明  
