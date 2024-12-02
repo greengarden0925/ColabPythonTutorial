@@ -619,3 +619,540 @@ for city, lat, lon in cities:
 ---
 ## 5. 資料結構
 ---
+## 1. 列表（`list`）操作：新增、刪除、排序
+
+### 說明  
+列表是可變的有序集合，用於存儲多個值，可以新增、刪除、或排序元素。
+
+### 範例程式碼
+
+#### 新增元素
+```python
+# 使用 append() 方法新增元素
+fruits = ["apple", "banana", "cherry"]
+fruits.append("orange")  # 新增一個元素到列表末尾
+print(fruits)  # ['apple', 'banana', 'cherry', 'orange']
+
+# 使用 insert() 方法在指定位置新增元素
+fruits.insert(1, "kiwi")  # 在索引 1 插入 'kiwi'
+print(fruits)  # ['apple', 'kiwi', 'banana', 'cherry', 'orange']
+```
+
+#### 刪除元素
+```python
+# 使用 remove() 方法刪除指定值
+fruits.remove("banana")  # 刪除 'banana'
+print(fruits)  # ['apple', 'kiwi', 'cherry', 'orange']
+
+# 使用 pop() 方法刪除指定位置的元素
+removed_fruit = fruits.pop(2)  # 刪除索引 2 的元素
+print(removed_fruit)  # 'cherry'
+print(fruits)  # ['apple', 'kiwi', 'orange']
+```
+
+#### 排序
+```python
+# 使用 sort() 方法排序
+numbers = [5, 2, 9, 1]
+numbers.sort()  # 升序排序
+print(numbers)  # [1, 2, 5, 9]
+
+# 使用 sorted() 函數返回新排序列表
+numbers_desc = sorted(numbers, reverse=True)  # 降序排序
+print(numbers_desc)  # [9, 5, 2, 1]
+```
+
+### 練習題  
+**問題：** 創建一個學生分數的列表，新增一個分數，刪除最低分數，並將列表按升序排序後打印。  
+
+**提示：** 使用 `append()`、`min()` 和 `sort()`。  
+
+**標準答案：**
+```python
+scores = [85, 92, 78, 90]
+scores.append(88)  # 新增一個分數
+scores.remove(min(scores))  # 刪除最低分數
+scores.sort()  # 排序
+print("更新後的分數列表：", scores)  # [85, 88, 90, 92]
+```
+
+---
+
+## 2. 字典（`dict`）操作：鍵值對管理
+
+### 說明  
+字典是一種無序的鍵值對集合，用於快速查找、添加、或刪除資料。
+
+### 範例程式碼
+
+#### 新增或修改鍵值對
+```python
+# 新增鍵值對
+student = {"name": "Alice", "age": 20}
+student["grade"] = "A"  # 新增 'grade' 鍵
+print(student)  # {'name': 'Alice', 'age': 20, 'grade': 'A'}
+
+# 修改鍵值對
+student["age"] = 21  # 修改 'age' 的值
+print(student)  # {'name': 'Alice', 'age': 21, 'grade': 'A'}
+```
+
+#### 刪除鍵值對
+```python
+# 使用 pop() 方法刪除鍵
+removed_value = student.pop("grade")  # 刪除 'grade'
+print(removed_value)  # 'A'
+print(student)  # {'name': 'Alice', 'age': 21}
+
+# 使用 del 關鍵字刪除鍵值對
+del student["age"]
+print(student)  # {'name': 'Alice'}
+```
+
+#### 遍歷字典
+```python
+# 遍歷鍵與值
+for key, value in student.items():
+    print(f"{key}: {value}")
+```
+
+### 練習題  
+**問題：** 創建一個包含 3 位學生及其分數的字典，新增一位學生及其分數，刪除分數最低的學生。  
+
+**提示：** 使用 `min()` 尋找分數最低的鍵值。  
+
+**標準答案：**
+```python
+students = {"Alice": 85, "Bob": 92, "Charlie": 78}
+students["David"] = 88  # 新增學生
+lowest_score = min(students, key=students.get)  # 找到最低分的學生
+del students[lowest_score]  # 刪除最低分學生
+print("更新後的學生列表：", students)  # {'Alice': 85, 'Bob': 92, 'David': 88}
+```
+
+---
+
+## 3. 集合（`set`）與元組（`tuple`）的使用場景
+
+### 集合（`set`）
+
+#### 說明  
+集合是無序且不重複的元素集合，適合用於快速測試是否存在某元素或去重操作。
+
+#### 範例程式碼
+```python
+# 去重
+numbers = [1, 2, 2, 3, 4, 4]
+unique_numbers = set(numbers)  # 去除重複元素
+print(unique_numbers)  # {1, 2, 3, 4}
+
+# 集合運算
+set_a = {1, 2, 3}
+set_b = {2, 3, 4}
+print(set_a & set_b)  # 交集：{2, 3}
+print(set_a | set_b)  # 聯集：{1, 2, 3, 4}
+print(set_a - set_b)  # 差集：{1}
+```
+
+### 元組（`tuple`）
+
+#### 說明  
+元組是不可變的有序集合，適合存儲不變的數據（如座標）。
+
+#### 範例程式碼
+```python
+# 創建元組
+point = (2, 3)
+print("x 坐標是：", point[0])  # 訪問元組的元素
+
+# 元組的解包
+x, y = point
+print(f"x: {x}, y: {y}")
+```
+
+### 練習題  
+
+#### 集合題目  
+**問題：** 給定兩個班級的學生名單，找出同時參加兩個班級的學生。  
+
+**提示：** 使用集合的交集運算。  
+
+**標準答案：**
+```python
+class_a = {"Alice", "Bob", "Charlie"}
+class_b = {"Bob", "David", "Charlie"}
+common_students = class_a & class_b
+print("同時參加兩個班級的學生：", common_students)  # {'Bob', 'Charlie'}
+```
+
+#### 元組題目  
+**問題：** 創建一個元組存放 3 個城市的經緯度，並打印每個城市的經緯度。  
+
+**提示：** 使用迴圈解包元組內容。  
+
+**標準答案：**
+```python
+cities = [("Taipei", 25.0330, 121.5654), ("Tokyo", 35.6895, 139.6917), ("Seoul", 37.5665, 126.9780)]
+
+for city, lat, lon in cities:
+    print(f"{city} 的經緯度是：({lat}, {lon})")
+```
+---
+## 6. 檔案操作
+---
+
+## 1. 檔案操作：打開、讀取、寫入文件（`open()`、`read()`、`write()`）
+
+### 說明  
+檔案操作是程式處理數據的重要部分，通過 `open()` 打開文件，並使用 `read()` 讀取或 `write()` 寫入內容。
+
+### 範例程式碼
+
+#### 打開與讀取文件
+```python
+# 讀取文件內容
+try:
+    with open("example.txt", "r") as file:  # 使用 "r" 模式打開文件
+        content = file.read()  # 讀取整個文件內容
+        print("文件內容：")
+        print(content)
+except FileNotFoundError:
+    print("文件不存在，請檢查文件名稱。")
+```
+
+#### 寫入文件
+```python
+# 寫入新內容到文件
+with open("example.txt", "w") as file:  # 使用 "w" 模式覆蓋寫入
+    file.write("這是一個新的檔案內容。\n")
+    file.write("學習 Python 的檔案操作！")
+print("內容已寫入 example.txt")
+```
+
+#### 附加寫入文件
+```python
+# 附加內容到文件
+with open("example.txt", "a") as file:  # 使用 "a" 模式附加內容
+    file.write("\n這是附加的內容。")
+print("附加內容已添加到 example.txt")
+```
+
+### 練習題  
+**問題：** 創建一個名為 `students.txt` 的文件，寫入 3 位學生的姓名，然後讀取並打印文件內容。  
+
+**提示：** 使用 `write()` 和 `read()` 操作。  
+
+**標準答案：**
+```python
+# 寫入學生姓名
+with open("students.txt", "w") as file:
+    file.write("Alice\n")
+    file.write("Bob\n")
+    file.write("Charlie\n")
+
+# 讀取文件內容
+with open("students.txt", "r") as file:
+    content = file.read()
+print("文件內容：")
+print(content)
+```
+
+---
+
+## 2. 檔案處理的錯誤捕捉
+
+### 說明  
+在檔案操作中可能會發生文件不存在、讀寫權限不足等錯誤，這些問題可以通過異常處理來應對。
+
+### 範例程式碼
+
+#### 捕捉文件錯誤
+```python
+try:
+    with open("nonexistent_file.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("錯誤：文件不存在。")
+except PermissionError:
+    print("錯誤：無法讀取文件，權限不足。")
+```
+
+### 練習題  
+**問題：** 實現一個程式，嘗試讀取用戶指定的文件，如果文件不存在，提示用戶重新輸入文件名稱。  
+
+**提示：** 使用 `while` 迴圈和 `try-except` 捕捉錯誤。  
+
+**標準答案：**
+```python
+while True:
+    filename = input("請輸入文件名稱： ")
+    try:
+        with open(filename, "r") as file:
+            content = file.read()
+        print("文件內容：")
+        print(content)
+        break
+    except FileNotFoundError:
+        print("文件不存在，請再試一次。")
+```
+
+---
+## 7. 異常處理
+---
+
+## 1. 異常處理：使用 `try`、`except` 捕捉錯誤
+
+### 說明  
+異常處理幫助程式在錯誤發生時不中斷，並能執行相應的應對措施。
+
+### 範例程式碼
+
+#### 捕捉通用錯誤
+```python
+try:
+    result = 10 / 0  # 會引發 ZeroDivisionError
+except ZeroDivisionError:
+    print("錯誤：除以零。")
+```
+
+#### 捕捉多種類型錯誤
+```python
+try:
+    value = int(input("請輸入一個整數： "))
+    result = 10 / value
+    print("計算結果：", result)
+except ValueError:
+    print("錯誤：輸入的不是整數。")
+except ZeroDivisionError:
+    print("錯誤：不能除以零。")
+```
+
+---
+
+## 2. 使用 `finally` 處理資源釋放
+
+### 說明  
+`finally` 區塊中的程式碼無論是否發生異常都會執行，適合用於釋放資源，如關閉文件。
+
+### 範例程式碼
+
+#### 使用 `finally`
+```python
+try:
+    file = open("example.txt", "r")
+    content = file.read()
+    print("文件內容：")
+    print(content)
+except FileNotFoundError:
+    print("文件不存在。")
+finally:
+    if 'file' in locals() and not file.closed:
+        file.close()  # 確保文件被關閉
+        print("文件已關閉。")
+```
+
+### 練習題  
+**問題：** 實現一個程式，嘗試讀取一個文件，如果發生錯誤，打印錯誤訊息，無論是否成功都需打印 "操作結束"。  
+
+**提示：** 使用 `try-except-finally` 處理錯誤並打印訊息。  
+
+**標準答案：**
+```python
+try:
+    with open("example.txt", "r") as file:
+        content = file.read()
+        print("文件內容：")
+        print(content)
+except FileNotFoundError:
+    print("錯誤：文件不存在。")
+finally:
+    print("操作結束。")
+```
+---
+## 8. 物件導向程式設計(Object-oriented programming, OOP) 
+---
+## 1. 類與物件的概念
+
+### 說明  
+- **類（Class）** 是對物件的抽象描述，定義了物件的屬性和行為。  
+- **物件（Object）** 是類的實例，是具有具體值和狀態的存在。  
+
+### 範例程式碼
+```python
+# 定義一個簡單的類與物件
+class Dog:
+    """
+    定義狗的類，包含屬性和方法
+    """
+    def __init__(self, name, age):  # 初始化方法
+        self.name = name  # 名字屬性
+        self.age = age  # 年齡屬性
+
+    def bark(self):  # 方法
+        print(f"{self.name} 說：汪汪！")
+
+# 創建物件
+my_dog = Dog("Lucky", 3)
+print(f"我的狗叫 {my_dog.name}，今年 {my_dog.age} 歲。")
+my_dog.bark()  # 呼叫物件的方法
+```
+
+### 練習題  
+**問題：** 創建一個名為 `Car` 的類，該類具有 `brand` 和 `speed` 屬性，以及一個方法 `drive()` 用於打印車輛行駛的訊息。  
+
+**提示：** 使用 `__init__` 初始化屬性，並定義方法打印消息。  
+
+**標準答案：**
+```python
+class Car:
+    def __init__(self, brand, speed):
+        self.brand = brand
+        self.speed = speed
+
+    def drive(self):
+        print(f"{self.brand} 以 {self.speed} km/h 的速度行駛中。")
+
+# 創建物件
+my_car = Car("Toyota", 120)
+my_car.drive()
+```
+
+---
+
+## 2. 定義類（`class`）與方法
+
+### 說明  
+類可以包含屬性（變數）和方法（函式），通過定義方法來描述物件的行為。
+
+### 範例程式碼
+
+#### 屬性與方法
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"大家好，我是 {self.name}，我今年 {self.age} 歲。")
+
+# 創建物件並調用方法
+person = Person("Alice", 25)
+person.greet()
+```
+
+#### 修改屬性
+```python
+# 修改屬性值
+person.age = 26  # 修改年齡
+print(f"{person.name} 的新年齡是 {person.age} 歲。")
+```
+
+### 練習題  
+**問題：** 定義一個類 `Rectangle`，用於表示長方形，包含長（`length`）和寬（`width`）屬性，以及計算面積的 `area()` 方法和計算周長的 `perimeter()` 方法。  
+
+**提示：** 面積公式為 `length * width`，周長公式為 `2 * (length + width)`。  
+
+**標準答案：**
+```python
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+# 創建物件並測試
+rect = Rectangle(5, 3)
+print("面積是：", rect.area())
+print("周長是：", rect.perimeter())
+```
+
+---
+
+## 3. 繼承與多型
+
+### 說明  
+- **繼承（Inheritance）**：允許新類別基於現有類別創建，繼承父類的屬性和方法。  
+- **多型（Polymorphism）**：允許不同類型的物件使用相同的方法，但表現出不同的行為。
+
+### 範例程式碼
+
+#### 繼承
+```python
+# 定義父類
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print("動物發出聲音。")
+
+# 定義子類
+class Cat(Animal):
+    def speak(self):
+        print(f"{self.name} 說：喵喵！")
+
+# 創建子類物件
+cat = Cat("Kitty")
+cat.speak()  # 調用子類的方法
+```
+
+#### 多型
+```python
+# 多型例子
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} 說：汪汪！")
+
+# 測試多型行為
+animals = [Cat("Kitty"), Dog("Buddy")]
+
+for animal in animals:
+    animal.speak()  # 根據物件類型調用相應的方法
+```
+
+### 練習題  
+**問題：** 定義一個父類 `Shape`，包含一個方法 `area()`（默認返回 0），然後定義子類 `Circle` 和 `Square`，分別實現 `area()` 方法計算圓形和正方形的面積。  
+
+**提示：** 圓形面積公式為 `pi * r^2`，正方形面積公式為 `side^2`。  
+
+**標準答案：**
+```python
+import math
+
+class Shape:
+    def area(self):
+        return 0
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * (self.radius ** 2)
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+
+    def area(self):
+        return self.side ** 2
+
+# 創建物件並測試
+circle = Circle(3)
+square = Square(4)
+
+print("圓的面積是：", circle.area())  # 圓的面積
+print("正方形的面積是：", square.area())  # 正方形的面積
+```
+
+---
+## 9. 常用函式庫
+---
+
+
