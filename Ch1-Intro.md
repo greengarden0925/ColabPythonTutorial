@@ -143,7 +143,7 @@ print("File saved to Google Drive.")
 - `open()`：創建或打開文件，並寫入數據。
 
 ### 練習題：
-1. 編寫代碼將一個包含數字的列表保存為文本文件到 Google Drive。
+1. 編寫代碼將一個包含數字的列表保存為文件存到 Google Drive。
 
 #### 提示：
 - 使用 `open()` 方法將數據寫入文件。
