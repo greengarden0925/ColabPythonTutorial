@@ -444,8 +444,15 @@ def square(number):
 ```
 
 2. 在主程式中匯入並使用模組：
+如果module的位置放在google drive，其路徑為content/drive/My Drive/Modules/my_module.py
+此時要先設定這個路徑為python search path 
+
 ```python
-# 匯入自訂模組
+# 設定my_module.py存放的資料夾為python search path
+import sys
+sys.path.append('/content/drive/My Drive/Modules')
+
+# 匯入自訂模組，不要加上副檔名.py
 import my_module
 
 # 使用模組的函式
