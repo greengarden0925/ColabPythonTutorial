@@ -176,6 +176,41 @@ for i in range(1, 6):  # range(1, 6) 產生數字 1 到 5
     total += i  # 將每次迭代的數字累加到 total
 print("總和是：", total)
 ```
+第一輪迴圈 (i = 1)：
+
+進入迴圈，i = 1
+計算 total = total + i，即 total = 0 + 1 = 1
+更新 total = 1
+第二輪迴圈 (i = 2)：
+
+進入迴圈，i = 2
+計算 total = total + i，即 total = 1 + 2 = 3
+更新 total = 3
+第三輪迴圈 (i = 3)：
+
+進入迴圈，i = 3
+計算 total = total + i，即 total = 3 + 3 = 6
+更新 total = 6
+第四輪迴圈 (i = 4)：
+
+進入迴圈，i = 4
+計算 total = total + i，即 total = 6 + 4 = 10
+更新 total = 10
+第五輪迴圈 (i = 5)：
+
+進入迴圈，i = 5
+計算 total = total + i，即 total = 10 + 5 = 15
+更新 total = 15
+迴圈結束：
+
+所有數字已完成累加，退出迴圈。
+總和為 total = 15。
+印出結果：
+
+執行 print("總和是：", total)
+輸出：總和是： 15
+總結
+每次迴圈逐步累加數值，total 最後的值是 1 + 2 + 3 + 4 + 5 = 15。
 
 #### `while` 迴圈
 ```python
