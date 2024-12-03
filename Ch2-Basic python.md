@@ -173,7 +173,7 @@ else:
 # 使用 for 迴圈計算 1 到 5 的總和
 total = 0
 for i in range(1, 6):  # range(1, 6) 產生數字 1 到 5
-    total += i  # 將每次迭代的數字累加到 total
+    total += i  # 將每次迭代的數字累加到 total，total=total+i
 print("總和是：", total)
 ```
 第一輪迴圈 (i = 1)：
