@@ -145,7 +145,7 @@ display.Video('input_video.mp4', embed=True)
 執行影片檢測：
 ```python
 # 輸入影片路徑
-input_video = 'input_video.mp4'  # 替换为你上传的视频文件名
+input_video = 'input_video.mp4' 
 
 # 進行影片檢測
 results = model(source=input_video)
