@@ -79,10 +79,12 @@
 
 #### **步驟 2：連接 API**
 ```python
-import openai
+import os
+from openai import OpenAI
 
-# 設定 API 金鑰
-openai.api_key = "你的_API_金鑰"
+client = OpenAI(
+    api_key="你的_API_金鑰",  # This is the default and can be omitted
+)
 
 # 測試請求
 response = openai.ChatCompletion.create(
