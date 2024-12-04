@@ -60,19 +60,33 @@
 
 ## **2. YOLO 實作應用**
 
-### **2.1 透過 Colab 加載預訓練模型**（20 分鐘）
+### **2.1 透過 Colab 加載預訓練模型**
 
 #### **步驟 1：下載範例檔案**
 使用網路上提供的開放資料集，以下是範例圖片的下載指令：
 ```bash
 !wget https://ultralytics.com/images/bus.jpg -O bus.jpg
 !wget https://ultralytics.com/images/zidane.jpg -O zidane.jpg
+
+#顯示圖片
+import matplotlib.pyplot as plt
+def show_image(image_path):
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    plt.imshow(image)
+    plt.axis('off')  # Hide axis
+    plt.show()
+
+show_image('bus.jpg')
+show_image('zidane.jpg')
+
 ```
 
 #### **步驟 2：加載預訓練模型**
 使用 YOLOv8 的預訓練權重進行物件檢測：
 ```python
 from ultralytics import YOLO
+from google.colab.patches import cv2_imshow
 
 # 加載預訓練模型
 model = YOLO('yolov8s.pt')  # 使用 YOLOv8 的 Small 模型
@@ -81,38 +95,31 @@ model = YOLO('yolov8s.pt')  # 使用 YOLOv8 的 Small 模型
 results = model('bus.jpg', conf=0.4)
 
 # 顯示檢測結果
-results.show()
+cv2_imshow(results[0].plot())
 ```
-
-#### **步驟 3：保存檢測結果**
-將檢測結果保存為圖片：
+建立圖片偵測函示
 ```python
-results.save(save_dir='runs/detect/exp')  # 檢測結果保存於目錄下
+#建立輸入圖片判斷物件並顯示的函示
+def detectShow(image_path,conf):
+  results = model(image_path, conf=conf, stream=False)  # Modified to return a single Results object
+  cv2_imshow(results[0].plot())
+
+detectShow("zidane.jpg",conf=0.8)
 ```
 
----
 
-### **2.2 使用 YOLOv8 進行影像物件辨識**（20 分鐘）
+### **2.2 使用 YOLOv8 進行影像物件辨識**
 
 #### **步驟 1：檢測多張圖片**
 一次處理多張影像：
 ```python
 results = model(['bus.jpg', 'zidane.jpg'], conf=0.5)
-results.show()
+cv2_imshow(results[0].plot())
+cv2_imshow(results[1].plot())
 ```
-
-#### **步驟 2：下載檢測結果**
-檢測結果將保存於 `runs/detect/exp` 目錄下，以下代碼可下載結果：
-```python
-from google.colab import files
-
-files.download('runs/detect/exp/bus.jpg')
-files.download('runs/detect/exp/zidane.jpg')
-```
-
 ---
 
-### **2.3 實現即時影像辨識**（25 分鐘）
+### **2.3 實現即時影像辨識**
 
 #### **步驟 1：即時影像檢測**
 啟用攝影機進行即時檢測（需本地執行環境支持攝影機）：
@@ -124,14 +131,29 @@ results.show()
 #### **步驟 2：檢測影片**
 使用範例影片進行物件檢測，以下指令可下載測試影片：
 ```bash
-!wget https://github.com/ultralytics/yolov5/releases/download/v1.0/bus.mp4 -O bus.mp4
+#從google drive共享連結下載mp4檔案
+!pip install gdown
+import gdown
+
+url = 'https://drive.google.com/uc?id=1BtSAUp92j1VkrNYTXvEW0dNSAdiUiYPn'
+
+# 設定儲存的檔案路徑
+output = 'input_video.mp4'
+
+# 下載檔案
+gdown.download(url, output, quiet=False)
 ```
 執行影片檢測：
 ```python
-results = model('bus.mp4', conf=0.4)
-results.show()
+import IPython.display as display
+display.Video('input_video.mp4', embed=True)
 ```
 
+查看影格
+```python
+cv2_imshow(results[10].plot())
+cv2_imshow(results[180].plot())
+```
 ---
 
 ### **綜合練習**
@@ -145,15 +167,10 @@ results.show()
 ```python
 # 1. 檢測多張圖片
 results = model(['bus.jpg', 'zidane.jpg'], conf=0.5)
-results.save(save_dir='runs/detect/exp')
 
 # 2. 檢測影片
-results = model('bus.mp4', conf=0.4)
-results.save(save_dir='runs/detect/exp_video')
+results = model('input_video.mp4', conf=0.4)
 
-# 3. 即時影像辨識
-results = model(source=0, conf=0.4)
-results.show()
 ```
 
 ---
