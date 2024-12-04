@@ -87,15 +87,14 @@ client = OpenAI(
 )
 
 # 測試請求
-response = openai.ChatCompletion.create(
+response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": "你是一個友好的助理。"},
         {"role": "user", "content": "你好！"}
     ]
 )
-
-print("回應：", response["choices"][0]["message"]["content"])
+print("回應：", response.choices[0].message.content)
 ```
 
 ---
@@ -106,14 +105,14 @@ print("回應：", response["choices"][0]["message"]["content"])
 1. 輸入主題關鍵詞，生成廣告文案：
 ```python
 def generate_ad_copy(topic):
-    response = openai.ChatCompletion.create(
+    response =  client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "你是一個專業的文案撰寫助理。"},
             {"role": "user", "content": f"幫我為 {topic} 撰寫一段廣告文案。"}
         ]
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
 # 測試文案生成
 topic = "環保飲品"
@@ -127,14 +126,14 @@ print(generate_ad_copy(topic))
 #### **步驟 1：設計問答系統**
 ```python
 def chatbot(user_input):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "你是一個博學的助手。"},
             {"role": "user", "content": user_input}
         ]
     )
-    return response["choices"][0]["message"]["content"]
+    return response.choices[0].message.content
 
 # 測試問答
 question = "Python 的主要用途是什麼？"
