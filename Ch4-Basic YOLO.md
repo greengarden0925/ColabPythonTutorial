@@ -136,12 +136,19 @@ output = 'input_video.mp4'
 
 # 下載檔案
 gdown.download(url, output, quiet=False)
+
+#查看影片
+import IPython.display as display
+display.Video('input_video.mp4', embed=True)
 ```
 #### **步驟 2：檢測影片**
 執行影片檢測：
 ```python
-import IPython.display as display
-display.Video('input_video.mp4', embed=True)
+# 輸入影片路徑
+input_video = 'input_video.mp4'  # 替换为你上传的视频文件名
+
+# 進行影片檢測
+results = model(source=input_video)
 ```
 
 查看影格
